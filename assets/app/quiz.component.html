@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1 *ngIf="this.language_name">Is this {{this.language_name}} code??</h1>
+            <h1 *ngIf="!this.language_name">Loading...</h1>
+        </div>
+    </div>
+
+</div>
+<div class="container" *ngIf="this.language_name">
+    <div class="row">
+        <div class="col-8 mb-3">
+            <div class="img-fluid">
+                <img src="{{imageModel?.imageLink}}" alt="Image loading" class="img-fluid imageContainer">
+            </div>
+        </div>
+        <div class="col-12">
+            <form (ngSubmit)="onSubmit()" [formGroup]="myForm" (change)="onChange()">
+                <div class="form-group">
+                    <label for="username">
+                        Username (Required)
+                        <input type="text" class="form-control" id="username" formControlName="username">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-4 col-8">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label class="switch" for="isCode">
+                                        <input type="checkbox" id="isCode" formControlName="isCode">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="col-2"></div>
+                                <p class="col-8 align-self-center">Yep that's {{this?.language_name}} Code!</p>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4 col-8">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label class="switch" for="handWritten">
+                                        <input type="checkbox" id="handWritten" formControlName="handWritten">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="col-2"></div>
+                                <p class="col-8 align-self-center">There's code, but it's hand written</p>
+                            </div>
+                        </div>
+                        <div class="col-4"></div>
+                        <div class="col-md-4 col-8">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label class="switch" for="partiallyVisible">
+                                        <input type="checkbox" id="partiallyVisible" formControlName="partiallyVisible">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="col-2"></div>
+                                <p class="col-8 align-self-center">There's code, but it's not the majority of screen</p>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-8">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label class="switch" for="notCode">
+                                        <input type="checkbox" id="notCode" formControlName="notCode">
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                                <div class="col-2"></div>
+                                <p class="col-8 align-self-center">That's Not {{this?.language_name}} Code!</p>
+                            </div>
+                        </div>
+                        <button class="btn btn-primary col-8" type="submit" [disabled]="!isEnabled">Submit</button>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+</div>
